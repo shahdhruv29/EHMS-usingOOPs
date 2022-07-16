@@ -8,9 +8,12 @@ public class Bill {
     }
 
     public static void calculateBill(AddmittedPatient patient) {
-        System.out.println("Enter the number of days the patient stayed: ");
+        patient.billPatient = new Bill();
+    	System.out.print("Enter the number of days the patient stayed: ");
         patient.no_of_days = sc.nextInt();
         patient.billPatient.totalAmount = (patient.DocFees*patient.no_of_days) + (patient.RoomCharge*patient.no_of_days);
+        patient.Status = "Released";
+        System.out.println("Total Calculated Amount : " + patient.billPatient.totalAmount);
     }
 
     public static void printBill(RegularPatient patient) {

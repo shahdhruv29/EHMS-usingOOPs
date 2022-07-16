@@ -22,37 +22,35 @@ public class DoctorInfo {
 
 	
 
-	public static String DoctorAllotment(int type) {
-		int a = type; // a is for specialisation.
-				// a is a doctor-type code that we have take input
+	public static String DoctorAllotment(String symptoms) {
 		int x; // x is taking random number which is an index for doctors Arraylist
 		Random r = new Random();
-		if (a == 1) {
-			// Cardiologist
-			x = r.nextInt(cardioDoctor.l1.size());
+		if (symptoms.equalsIgnoreCase("tremor")) {
+			// neuro
+			x = r.nextInt(neuroDoctor.l3.size());
 			return (cardioDoctor.l1.get(x).DoctorName);
 		}
-		if (a == 2) {
+		if (symptoms.equalsIgnoreCase("hair-loss")) {
 			// Dermatologist.
 			x = r.nextInt(skinDoctor.l2.size());
 			return (skinDoctor.l2.get(x).DoctorName);
 		}
-		if (a == 3) {
-			// neuro
-			x = r.nextInt(neuroDoctor.l3.size());
+		if (symptoms.equalsIgnoreCase("breath-shortness")) {
+			// Cardiologist
+			x = r.nextInt(cardioDoctor.l1.size());
 			return (neuroDoctor.l3.get(x).DoctorName);
 		}
-		if (a == 0) {
+		if (symptoms.equalsIgnoreCase("fever")) {
 			// generalDoctor
 			x = r.nextInt(generalDoctor.l4.size());
 			return (generalDoctor.l4.get(x).DoctorName);
 
 		}
-		if (a == 4) {
-			// radioDoctor
-			x = r.nextInt(radioDoctor.l5.size());
-			return (radioDoctor.l5.get(x).DoctorName);
-		}
+//		if (symptoms.equalsIgnoreCase("")) {
+//			// radioDoctor
+//			x = r.nextInt(radioDoctor.l5.size());
+//			return (radioDoctor.l5.get(x).DoctorName);
+//		}
 		return "";
 	}
 }
