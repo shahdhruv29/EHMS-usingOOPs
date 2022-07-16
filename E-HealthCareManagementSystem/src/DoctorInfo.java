@@ -40,18 +40,18 @@ public class DoctorInfo {
 			x = r.nextInt(cardioDoctor.l1.size());
 			return (neuroDoctor.l3.get(x).DoctorName);
 		}
-		if (symptoms.equalsIgnoreCase("fever")) {
+//		if (symptoms.equalsIgnoreCase("fever")) {
 			// generalDoctor
 			x = r.nextInt(generalDoctor.l4.size());
 			return (generalDoctor.l4.get(x).DoctorName);
 
-		}
+//		}
 //		if (symptoms.equalsIgnoreCase("")) {
 //			// radioDoctor
 //			x = r.nextInt(radioDoctor.l5.size());
 //			return (radioDoctor.l5.get(x).DoctorName);
 //		}
-		return "";
+//		return "";
 	}
 }
 

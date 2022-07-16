@@ -403,6 +403,7 @@ class AddmittedPatient extends Patient {
     void appointDoctor() {
         this.giveSymptoms();
         DoctorAppointed = DoctorInfo.DoctorAllotment(this.Symptoms);
+        System.out.println("Doctor Appointed : " + this.DoctorAppointed);
     }
 
     // Fuction that print the basic details of all patient
@@ -429,7 +430,7 @@ class AddmittedPatient extends Patient {
 
     // Make functions of Symptoms
     void giveSymptoms() {
-        System.out.println("Symptoms : ");
+        System.out.print("Symptoms : ");
     	this.Symptoms = Patient.sc.next();
     }
 
