@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Patient {
-
+ 
     public static Scanner sc = new Scanner(System.in);
     public String name;
     public String address;
@@ -81,6 +81,10 @@ public class Patient {
                     System.out.println("ENTER PATIENT ID : ");
                     id = sc.next();
                     printed = findPatient(id);
+                    if (printed == null) {
+                    	System.out.println("Patient ID doesn't exist, try again...");
+                    	return;
+                    }
                     printed.printPatientDetail();
                     break;
                 case 2:
@@ -98,8 +102,14 @@ public class Patient {
                     id = sc.next();
 //                    System.out.println(id);
                     printed = findPatient(id);
+                    if (printed == null) {
+                    	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
+                    	return;
+                    }
+                    
                     if (printed.type.equals(RegularPatient.typePatient)) {
                         RegularPatient billPatient = (RegularPatient) printed;
+                        System.out.println("Hi");
                         Bill.calculateBill(billPatient);
                     }
                     if (printed.type.equals(AddmittedPatient.typePatient)) {
@@ -179,14 +189,53 @@ public class Patient {
         name = sc.next();
     }
 
-    void setAge() {
-        System.out.print("Enter the age: ");
-        age = sc.nextInt();
+    void setAge() {   // exception handling using do - while to enter age in integer
+    	boolean checkage;
+    	age  = 0;
+    	do
+        {
+          try
+          {        
+        	  Scanner sc1 = new Scanner(System.in);
+            System.out.print("Enter the age: ");           
+            age = sc1.nextInt();
+            checkage=false;
+          }
+          catch(Exception e)
+          {
+            // accept integer only.
+            System.out.println("Enter age in integer value only ");
+            checkage=true;
+          }
+        }
+        while(checkage);
+        
+        
     }
 
-    void setSex() {
-        System.out.print("Enter sex: ");
-        sex = sc.next();
+     void setSex()  {
+    	boolean checksex = true;
+    	    	
+    	while(checksex == true)
+        {                        
+//	        Patient.sc = new Scanner(System.in);
+	        System.out.print("Enter sex: ");
+	        sex = Patient.sc.next();       
+	        if (sex.equalsIgnoreCase("M")) {
+	        	checksex=false;
+	        	return;
+	        }
+	        else if (sex.equalsIgnoreCase("F")) {
+	        	checksex=false;
+	        	return;
+	        }  
+	        else {
+	        	System.out.println("Enter M for Male and F for female ");   
+	        }
+          
+        }
+        
+        
     }
 
     void setContact_No() {
@@ -272,7 +321,7 @@ class RegularPatient extends Patient {
         System.out.println("Patient type : " + type);
         // System.out.println("Patient status : " + status);
         System.out.println("DoctorAppointed : " + DoctorAppointed);
-        // if (this.status == "examined") {
+//         if (this.status == "examined") {
         //     System.out.println("Digonosis" + Dignosis);
         //     System.out.println("Medicines" + Medicines);
         //     System.out.println("Charges " + patientBill.totalAmount);
@@ -308,8 +357,8 @@ class AddmittedPatient extends Patient {
     static String typePatient = "AddmittedPatient";
     public static ArrayList<AddmittedPatient> apList = new ArrayList<>();
     static {
-        apList.add(new AddmittedPatient(generatePatientID(AddmittedPatient.typePatient), "Jay"));
-        apList.add(new AddmittedPatient(generatePatientID(AddmittedPatient.typePatient), "Jaya"));
+        apList.add(new AddmittedPatient(generatePatientID(AddmittedPatient.typePatient), "Jay", "breath-shortness"));
+        apList.add(new AddmittedPatient(generatePatientID(AddmittedPatient.typePatient), "Jaya","hair-loss"));
 
         apList.get(0).contact_no = "9876543212";
         apList.get(1).contact_no = "9876543213";
@@ -328,10 +377,12 @@ class AddmittedPatient extends Patient {
 
     }
 
-    AddmittedPatient(String patientID, String name) {
+    AddmittedPatient(String patientID, String name, String Symptoms) {
         super(patientID, name);
         this.type = AddmittedPatient.typePatient;
-        this.no_of_days = 5;
+        this.Symptoms = Symptoms;
+        this.Status = "Addmitted";
+//        this.no_of_days = 5;
 
     }
 
@@ -368,7 +419,9 @@ class AddmittedPatient extends Patient {
 
     // @Override // It will Override the abstract printPatientDetail method
     void printPatientDetail() { // It will print all the details of the particular patient
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        
+    	
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println("Patient ID : " + patientID);
         System.out.println("Patient name : " + name);
         System.out.println("Patient age : " + age);
@@ -376,6 +429,8 @@ class AddmittedPatient extends Patient {
         System.out.println("Patient type : " + type);
         // System.out.println("Date of Addmissioin : " + formatter.format(dateOfAdmission));
         System.out.println("DoctorAppointed : " + DoctorAppointed);
+//        System.out.println("Status : " + this.Status);
+        System.out.println("Symptoms : " + this.Symptoms);
         System.out.println("Patient status : " + this.Status);
          if (this.Status == "Released") {
              System.out.println("Bill :" + billPatient.totalAmount);

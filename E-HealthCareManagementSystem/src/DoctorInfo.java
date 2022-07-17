@@ -25,20 +25,25 @@ public class DoctorInfo {
 	public static String DoctorAllotment(String symptoms) {
 		int x; // x is taking random number which is an index for doctors Arraylist
 		Random r = new Random();
-		if (symptoms.equalsIgnoreCase("tremor")) {
+		if (symptoms.equalsIgnoreCase("tremor") || symptoms.equalsIgnoreCase("Acute-Spinal-Cord-Injury") || symptoms.equalsIgnoreCase("Severe-Headache") ) {
 			// neuro
 			x = r.nextInt(neuroDoctor.l3.size());
-			return (cardioDoctor.l1.get(x).DoctorName);
+			return (neuroDoctor.l3.get(x).DoctorName);
 		}
-		if (symptoms.equalsIgnoreCase("hair-loss")) {
+		if (symptoms.equalsIgnoreCase("hair-loss"  ) || symptoms.equalsIgnoreCase("Pimples")|| symptoms.equalsIgnoreCase("Skin-rashes")  ) {
 			// Dermatologist.
 			x = r.nextInt(skinDoctor.l2.size());
 			return (skinDoctor.l2.get(x).DoctorName);
 		}
-		if (symptoms.equalsIgnoreCase("breath-shortness")) {
+		if (symptoms.equalsIgnoreCase("breath-shortness")||symptoms.equalsIgnoreCase("Low-Blood-Pressure") || symptoms.equalsIgnoreCase("High-Blood-Pressure")) {
 			// Cardiologist
 			x = r.nextInt(cardioDoctor.l1.size());
-			return (neuroDoctor.l3.get(x).DoctorName);
+			return (cardioDoctor.l1.get(x).DoctorName);
+		}
+		if (symptoms.equalsIgnoreCase("X-Ray")) {
+			// Radiologist
+			x = r.nextInt(radioDoctor.l5.size());
+			return (radioDoctor.l5.get(x).DoctorName);
 		}
 //		if (symptoms.equalsIgnoreCase("fever")) {
 			// generalDoctor
