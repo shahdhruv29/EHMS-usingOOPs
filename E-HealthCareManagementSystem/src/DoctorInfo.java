@@ -22,38 +22,41 @@ public class DoctorInfo {
 
 	
 
-	public static String DoctorAllotment(int type) {
-		int a = type; // a is for specialisation.
-				// a is a doctor-type code that we have take input
+	public static String DoctorAllotment(String symptoms) {
 		int x; // x is taking random number which is an index for doctors Arraylist
 		Random r = new Random();
-		if (a == 1) {
-			// Cardiologist
-			x = r.nextInt(cardioDoctor.l1.size());
-			return (cardioDoctor.l1.get(x).DoctorName);
-		}
-		if (a == 2) {
-			// Dermatologist.
-			x = r.nextInt(skinDoctor.l2.size());
-			return (skinDoctor.l2.get(x).DoctorName);
-		}
-		if (a == 3) {
+		if (symptoms.equalsIgnoreCase("tremor") || symptoms.equalsIgnoreCase("Acute-Spinal-Cord-Injury") || symptoms.equalsIgnoreCase("Severe-Headache") ) {
 			// neuro
 			x = r.nextInt(neuroDoctor.l3.size());
 			return (neuroDoctor.l3.get(x).DoctorName);
 		}
-		if (a == 0) {
+		if (symptoms.equalsIgnoreCase("hair-loss"  ) || symptoms.equalsIgnoreCase("Pimples")|| symptoms.equalsIgnoreCase("Skin-rashes")  ) {
+			// Dermatologist.
+			x = r.nextInt(skinDoctor.l2.size());
+			return (skinDoctor.l2.get(x).DoctorName);
+		}
+		if (symptoms.equalsIgnoreCase("breath-shortness")||symptoms.equalsIgnoreCase("Low-Blood-Pressure") || symptoms.equalsIgnoreCase("High-Blood-Pressure")) {
+			// Cardiologist
+			x = r.nextInt(cardioDoctor.l1.size());
+			return (cardioDoctor.l1.get(x).DoctorName);
+		}
+		if (symptoms.equalsIgnoreCase("X-Ray")) {
+			// Radiologist
+			x = r.nextInt(radioDoctor.l5.size());
+			return (radioDoctor.l5.get(x).DoctorName);
+		}
+//		if (symptoms.equalsIgnoreCase("fever")) {
 			// generalDoctor
 			x = r.nextInt(generalDoctor.l4.size());
 			return (generalDoctor.l4.get(x).DoctorName);
 
-		}
-		if (a == 4) {
-			// radioDoctor
-			x = r.nextInt(radioDoctor.l5.size());
-			return (radioDoctor.l5.get(x).DoctorName);
-		}
-		return "";
+//		}
+//		if (symptoms.equalsIgnoreCase("")) {
+//			// radioDoctor
+//			x = r.nextInt(radioDoctor.l5.size());
+//			return (radioDoctor.l5.get(x).DoctorName);
+//		}
+//		return "";
 	}
 }
 
