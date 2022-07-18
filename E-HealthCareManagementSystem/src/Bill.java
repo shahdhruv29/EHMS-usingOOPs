@@ -5,10 +5,10 @@ public class Bill {
     int totalAmount;
     
     public static void calculateBill(RegularPatient patient) {
-//    	if (patient == null) {
-//        	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
-//        	return;
-//        }
+    	if (patient == null) {
+        	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
+        	return;
+        }
     	
     	patient.patientBill = new Bill();
     	patient.patientBill.totalAmount = 1000;
@@ -16,10 +16,10 @@ public class Bill {
     }
 
     public static void calculateBill(AddmittedPatient patient) {
-//        if (patient == null) {
-//        	System.out.println("Patient ID doen't exist, enter correct Patient ID ..");
-//        	return;
-//        }
+        if (patient == null) {
+        	System.out.println("Patient ID doen't exist, enter correct Patient ID ..");
+        	return;
+        }
     	if (patient.Status.equals("Released")) {
         	System.out.println("The patients bill already exists ...");
         	return;
