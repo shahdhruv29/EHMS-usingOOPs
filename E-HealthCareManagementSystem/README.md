@@ -1,6 +1,6 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## E- HealthCare Management System
+The E-HealthCare Management System is a Java program developed using OOP concepts to carry out efficient management of hospitals and clinics, by taking care of the requirements of all the stakeholders such as doctors, patients and staff.
+Hospitals and clinics can use such program to record and maintain data of patients and doctors.
 
 ## Folder Structure
 
@@ -13,6 +13,6 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 > If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Future Tasks
+1. Add more actors to the system by creating a login feature to enable doctors, patients and admin to login into the system.
+2. Use a database like PostgreSQL to store the data of Patients and Doctors.
