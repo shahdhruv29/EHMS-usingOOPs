@@ -1,5 +1,7 @@
 import java.util.*;
 
+//The DoctorInfo class contains the information of various doctors(Hard-coded)
+//This information is used to allot doctors to the patient according to their symptoms.
 public class DoctorInfo {
 	String DoctorID;
 	String DoctorName;
@@ -45,18 +47,11 @@ public class DoctorInfo {
 			x = r.nextInt(radioDoctor.l5.size());
 			return (radioDoctor.l5.get(x).DoctorName);
 		}
-//		if (symptoms.equalsIgnoreCase("fever")) {
 			// generalDoctor
 			x = r.nextInt(generalDoctor.l4.size());
 			return (generalDoctor.l4.get(x).DoctorName);
 
-//		}
-//		if (symptoms.equalsIgnoreCase("")) {
-//			// radioDoctor
-//			x = r.nextInt(radioDoctor.l5.size());
-//			return (radioDoctor.l5.get(x).DoctorName);
-//		}
-//		return "";
+
 	}
 }
 

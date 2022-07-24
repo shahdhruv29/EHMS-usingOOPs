@@ -1,9 +1,11 @@
 import java.util.Scanner;
 
 public class Bill {
+    //Implemented the Bill Class 
     static Scanner sc= new Scanner(System.in);
     int totalAmount;
     
+    //The below method will calculate bill for the Regular Patient.
     public static void calculateBill(RegularPatient patient) {
     	if (patient == null) {
         	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
@@ -15,13 +17,14 @@ public class Bill {
     	System.out.println("Total Fees : " + patient.patientBill.totalAmount);
     }
 
+    //Method overloading is used to calculate bill for the Admitted Patient.
     public static void calculateBill(AddmittedPatient patient) {
         if (patient == null) {
         	System.out.println("Patient ID doen't exist, enter correct Patient ID ..");
         	return;
         }
     	if (patient.Status.equals("Released")) {
-        	System.out.println("The patients bill already exists ...");
+        	System.out.println("The patient is discharged from the hospital...");
         	return;
         }
     	
@@ -33,11 +36,9 @@ public class Bill {
         System.out.println("Total Calculated Amount : " + patient.billPatient.totalAmount);
     }
 
+    //The below method will Print Bill for the Regular Patient.
     public static void printBill(RegularPatient patient) {
-//    	if (patient == null) {
-//        	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
-//        	return;
-//        }
+
     	
     	System.out.println("\n\n\n\t\t\t_______________________________________________________________________________________");
         System.out.println("\t\t\t                                   PATIENT'S BILL                                            ");
@@ -49,14 +50,12 @@ public class Bill {
         System.out.println("\n\n\n\t\t\t_______________________________________________________________________________________");
     }
 
+    //The printBill method is overloaded to print bill for an Admitted Patient.
     public static void printBill(AddmittedPatient patient) {
-//    	if (patient == null) {
-//        	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
-//        	return;
-//        }
+
     	
     	if (patient.Status.equals("Addmitted")) {
-    		System.out.println("The patient is still addmitted you can view bill after when he released"); 
+    		System.out.println("The patient is undergoing treatment, Bill will be calculated once he/she is discharged."); 
     		return;
     	}
     	
@@ -76,6 +75,8 @@ public class Bill {
 
     }
 
+    //The printBill method, here the object of the patient class is passed as argument.
+    //This method checks the type of the patient and calls the print Bill method of the appropriate patient accordingly.
     public static void printBill(Patient patient) {
     	if (patient == null) {
         	System.out.println("Patient ID doen't exist, enter correct Patient ID ...");
