@@ -13,6 +13,6 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 > If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-##Future Tasks
+## Future Tasks
 1. Add more actors to the system by creating a login feature to enable doctors, patients and admin to login into the system.
 2. Use a database like PostgreSQL to store the data of Patients and Doctors.
